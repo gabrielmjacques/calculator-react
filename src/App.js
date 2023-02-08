@@ -11,20 +11,20 @@ function App()
   // Vars
 
   /* Verificação se o último char não é um número */
-  const checkLastChar = screenValue[ screenValue.length - 1 ] == '+' || screenValue[ screenValue.length - 1 ] == '-' || screenValue[ screenValue.length - 1 ] == 'X' || screenValue[ screenValue.length - 1 ] == '÷' || screenValue[ screenValue.length - 1 ] == '.'
+  const checkLastChar = screenValue[ screenValue.length - 1 ] == '+' || screenValue[ screenValue.length - 1 ] == '-' || screenValue[ screenValue.length - 1 ] == 'x' || screenValue[ screenValue.length - 1 ] == '÷' || screenValue[ screenValue.length - 1 ] == '.'
 
   // Functions
 
   /* Adicionar valor */
   const addValue = ( v ) =>
   {
-    if ( screenValue == '' && ( v != 'X' && v != '÷' && v != '.' ) )
+    if ( screenValue == '' && ( v != 'x' && v != '÷' && v != '.' ) )
     {
       setScreenValue( screenValue + v )
 
     } else if ( screenValue != '' )
     {
-      if ( checkLastChar && ( v == '+' || v == '-' || v == 'X' || v == '÷' || v == '.' ) )
+      if ( checkLastChar && ( v == '+' || v == '-' || v == 'x' || v == '÷' || v == '.' ) )
       {
 
       } else
@@ -40,7 +40,7 @@ function App()
     let keyValue = e.key
 
     const numbers = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ]
-    const operations = [ '+', '-', '*', '/' ]
+    const operations = [ '+', '-', '*', '/', '.' ]
 
     if ( numbers.indexOf( keyValue ) >= 0 )
     {
@@ -51,7 +51,7 @@ function App()
     {
       if ( keyValue == '*' )
       {
-        addValue( 'X' )
+        addValue( 'x' )
       } else if ( keyValue == '/' )
       {
         addValue( '÷' )
@@ -75,6 +75,11 @@ function App()
     {
       resultValue()
     }
+
+    if ( keyValue == 'i' )
+    {
+      invertValue()
+    }
   }
 
   /* Apagar */
@@ -89,6 +94,19 @@ function App()
     setScreenValue( '' )
   }
 
+  /* Inverter o valor */
+  const invertValue = () =>
+  {
+    if ( screenValue[ 0 ] == '-' )
+    {
+      setScreenValue( screenValue.substring( 1 ) )
+
+    } else if ( screenValue[ 0 ] != '-' )
+    {
+      setScreenValue( '-' + screenValue )
+    }
+  }
+
   /* Resultado */
   const resultValue = () =>
   {
@@ -101,7 +119,7 @@ function App()
         result = result.slice( 0, -1 )
       }
 
-      result = result.replaceAll( 'X', '*' ).replaceAll( '÷', '/' )
+      result = result.replaceAll( 'x', '*' ).replaceAll( '÷', '/' )
       result = eval( result )
 
       setScreenValue( String( result ) )
@@ -121,13 +139,13 @@ function App()
           <button onClick={ () => clean() }>C</button>
           <button onClick={ () => backspace() }>&larr;</button>
           <button className='Ops' onClick={ () => addValue( '÷' ) }>÷</button>
-          <button></button>
+          <button className='Ops' onClick={ () => invertValue() }>+/-</button>
 
           <button onClick={ () => addValue( '7' ) }>7</button>
           <button onClick={ () => addValue( '8' ) }>8</button>
           <button onClick={ () => addValue( '9' ) }>9</button>
 
-          <button className='Ops' onClick={ () => addValue( 'X' ) }>X</button>
+          <button className='Ops' onClick={ () => addValue( 'x' ) }>X</button>
 
           <button onClick={ () => addValue( '4' ) }>4</button>
           <button onClick={ () => addValue( '5' ) }>5</button>
@@ -148,7 +166,7 @@ function App()
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
 

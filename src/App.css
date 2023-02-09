@@ -14,7 +14,6 @@
 
 .Calculator {
     background-color: #e9e9e9;
-    overflow: hidden;
     width: fit-content;
 
     max-width: 400px;
@@ -111,7 +110,7 @@ button.IgualsButton:active {
         max-width: 100%;
 
         width: 100%;
-        height: 97%;
+        height: 95%;
         border-radius: 0;
 
         box-shadow: none;

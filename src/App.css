@@ -101,6 +101,10 @@ button.IgualsButton:active {
 
 
 @media (max-width: 450px) {
+    .App {
+        align-items: flex-start;
+    }
+
     .Calculator {
         min-width: 0;
         max-width: 100%;

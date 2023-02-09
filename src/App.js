@@ -108,8 +108,10 @@ function App()
   }
 
   /* Resultado */
-  const resultValue = () =>
+  const resultValue = ( e ) =>
   {
+
+
     if ( screenValue != '' && screenValue.length > 1 )
     {
       let result = screenValue

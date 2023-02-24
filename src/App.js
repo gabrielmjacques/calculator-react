@@ -140,8 +140,8 @@ function App()
 
           <button onClick={ () => clean() }>C</button>
           <button onClick={ () => backspace() }>&larr;</button>
-          <button className='Ops' onClick={ () => addValue( '÷' ) }>÷</button>
           <button className='Ops' onClick={ () => invertValue() }>+/-</button>
+          <button className='Ops' onClick={ () => addValue( '÷' ) }>÷</button>
 
           <button onClick={ () => addValue( '7' ) }>7</button>
           <button onClick={ () => addValue( '8' ) }>8</button>
